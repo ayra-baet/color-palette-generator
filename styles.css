@@ -131,13 +131,15 @@ button:active {
 
 .color {
     height: 120px;
+    cursor: pointer;
 }
 
 .color-info {
     padding: var(--padding-color-info);
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .hex-value {
@@ -148,6 +150,7 @@ button:active {
 
 .copy-btn {
     color: var(--color-copy-btn);
+    cursor: pointer;
     transition: color 0.2s ease;
 }
 
