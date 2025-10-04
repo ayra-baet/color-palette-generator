@@ -2,7 +2,7 @@
 const generateBtn = document.getElementById("generate-btn");
 const paletteContainer = document.getElementById("palette-container");
 
-// EVENT LISTENER
+// EVENT lISTENER
 generateBtn.addEventListener("click", generatePalette);
 paletteContainer.addEventListener("click", function(e) {
     if (e.target.classList.contains("copy-btn")) {
@@ -10,6 +10,12 @@ paletteContainer.addEventListener("click", function(e) {
 
         navigator.clipboard.writeText(hexValue)
         .then(() => showCopySuccess(e.target))
+        .catch((err) => console.log(err));
+    } else if (e.target.classList.contains("color")) {
+        const hexValue = e.target.nextElementSibling.textContent;
+
+        navigator.clipboard.writeText(hexValue)
+        .then(() => showCopySuccess(e.target.nextElementSibling.querySelector(".copy-btn")))
         .catch((err) => console.log(err));
     }
 });
@@ -24,14 +30,14 @@ function showCopySuccess(element) {
         element.classList.remove("fas", "fa-check");
         element.classList.add("far", "fa-copy");
         element.style.color = "";
-    },1500);
+    }, 1500);
 }
 
 function generatePalette() {
     const colors = [];
 
     for (let i = 0; i < 5; i++) {
-        colors.push(generateRandomColor());
+        colors.push(generateRandomColor())
     }
 
     displayPalette(colors);
